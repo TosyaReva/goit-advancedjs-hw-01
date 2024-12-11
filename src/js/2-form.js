@@ -53,17 +53,18 @@ function updateLocalStorage() {
 
 window.addEventListener('load', function (event) {
   const dataLocalStorage = localStorage.getItem(localStorageKey);
-  try {
-    const formDataObject = JSON.parse(dataLocalStorage);
+  if (!dataLocalStorage) return;
 
-    const formDataFromLSKeys = Object.keys(formDataObject);
+  const formDataObject = JSON.parse(dataLocalStorage);
+  if (typeof formDataObject !== 'object') return;
 
-    formDataFromLSKeys.forEach(key => {
-      form.elements[key].value = formDataObject[key];
-      formData[key] = formDataObject[key];
-    });
-  } catch (error) {}
+  const formDataFromLSKeys = Object.keys(formDataObject);
+
+  formDataFromLSKeys.forEach(key => {
+    form.elements[key].value = formDataObject[key];
+    formData[key] = formDataObject[key];
+  });
 });
 
-form.addEventListener('change', inputHandler);
+form.addEventListener('input', inputHandler);
 form.addEventListener('submit', submitHandler);
