@@ -1,0 +1,40 @@
+@import url('./reset.css');
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.gallery-image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  transition-duration: 200ms;
+  border-radius: 4px;
+  filter: saturate(0.5);
+}
+
+.gallery-image:hover {
+  scale: 1.05;
+  filter: saturate(1);
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 24px 24px;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  width: calc(100% / 3 - 24px);
+  height: auto;
+}
+
+.modal p {
+  color: white;
+}
